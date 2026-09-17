@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <!-- Root Menu -->
+    <menuitem
+        id="menu_product_extend_root"
+        name="My Products"
+        sequence="10"/>
+
+    <!-- Sub Menu -->
+    <menuitem
+        id="menu_product_extend_products"
+        name="Products"
+        parent="menu_product_extend_root"
+        action="product.product_normal_action_sell"
+        sequence="10"/>
+
+</odoo>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <menuitem id="menu_sale_custom_root" name="Sales" />
+
+    <menuitem id="menu_sale_custom_product"
+        name="Products"
+        parent="menu_sale_custom_root"
+        action="action_sale_custom_product" />
+
+    <menuitem id="menu_sale_custom_order"
+        name="Orders"
+        parent="menu_sale_custom_root"
+        action="action_sale_custom_order" />
+
+
+    <menuitem id="menu_sale_custom_reporting"
+        name="Reporting"
+        parent="menu_sale_custom_root"
+        action="action_sale_custom_reporting" />
+
+    <menuitem id="menu_sale_custom_customer"
+        name="Customers"
+        parent="menu_sale_custom_root"
+        action="action_sale_custom_customer" />
+
+</odoo>

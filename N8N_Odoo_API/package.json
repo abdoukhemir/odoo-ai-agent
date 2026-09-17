@@ -1,0 +1,21 @@
+{
+  "name": "n8n-odoo-api-bridge",
+  "version": "1.0.0",
+  "description": "A REST API bridge between Odoo's AI module and n8n workflow, mimicking OpenAI Chat Completions API",
+  "main": "src/server.js",
+  "scripts": {
+    "start": "node src/server.js",
+    "dev": "node --watch src/server.js"
+  },
+  "keywords": ["api", "odoo", "n8n", "openai", "bridge"],
+  "author": "Senior Backend Engineer",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.18.2",
+    "axios": "^1.6.0",
+    "dotenv": "^16.3.1"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}

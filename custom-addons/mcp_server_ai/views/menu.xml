@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- Root Menu under Settings > Technical -->
+    <menuitem id="menu_mcp_server_root"
+              name="MCP Server"
+              parent="base.menu_custom"
+              sequence="99"
+              groups="mcp_server_ai.group_mcp_user"/>
+
+    <!-- Model Access Menu -->
+    <menuitem id="menu_mcp_model_access"
+              name="Model Access"
+              parent="menu_mcp_server_root"
+              action="action_mcp_model_access"
+              sequence="10"
+              groups="mcp_server_ai.group_mcp_admin"/>
+
+    <!-- Audit Logs Menu -->
+    <menuitem id="menu_mcp_audit_log"
+              name="Audit Logs"
+              parent="menu_mcp_server_root"
+              action="action_mcp_audit_log"
+              sequence="20"
+              groups="mcp_server_ai.group_mcp_user"/>
+
+</odoo>

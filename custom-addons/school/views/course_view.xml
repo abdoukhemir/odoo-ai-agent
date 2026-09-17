@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<odoo>  
+  
+    <record id='course_list_view' model='ir.ui.view'>
+        <field name='name'>course list view</field>
+        <field name='model'>school.course</field>
+        <field name='arch' type='xml'>
+            <list string="Course List">
+                <field name="name"/>
+                <field name="description"/>
+                <field name="active"/>
+            </list>
+        </field>
+    </record>
+    <record id='course_form_view' model='ir.ui.view'>
+        <field name='name'>course form view</field>
+        <field name='model'>school.course</field>
+        <field name='arch' type='xml'>
+            <form string="Course Form">
+                <field name="state" widget="statusbar"/>
+                <sheet>
+                    <header>
+                        <button name="action_schedule" type="object" string="Schedule" class="btn-primary" invisible="state != 'draft'"/>
+                        <button name="action_start" type="object" string="Start" class="btn-secondary" invisible="state != 'scheduled'"/>
+                        <button name="action_done" type="object" string="Done" class="btn-success" invisible="state != 'start'"/>
+                        <button name="action_cancel" type="object" string="Cancel" class="btn-danger" invisible="state == 'done' or state == 'cancelled'"/>
+                    </header>
+
+                    <group string="Basic Information" readonly="state == 'done' or state == 'cancelled'">
+                        <field name="name" readonly="state == 'done' or state == 'cancelled'"/>                      
+                        <field name="description" readonly="state == 'done' or state == 'cancelled'"/>    
+                    </group>
+                    <group string="Status" readonly="state == 'done' or state == 'cancelled'">
+                        <field name="active" readonly="state == 'done' or state == 'cancelled'"/>
+                    </group>
+
+                    <notebook>
+                        <page string="Enrolled_students">
+                            <field name="enrollment_ids" readonly="state == 'done' or state == 'cancelled' ">
+                                <list string="Enrollments" editable="bottom">
+                                    <field name="student_id"/>
+                                    <field name="enrollment_date"/>
+                                    <field name="grade"/>
+                                </list>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+
+    </record>
+    <record id='course_search_view' model='ir.ui.view'>
+        <field name='name'>course search view</field>
+        <field name='model'>school.course</field>
+        <field name='arch' type='xml'>
+            <search string="Course Search">
+                <field name="name"/>
+                <field name="description"/>
+                <filter name="filter_by_name" string="By Name" domain="[('name','ilike','%course%')]"/>
+                <filter name="group_by_active" string="group_by_active" context="{'group_by': 'active'}"/>
+            </search>
+        </field>
+
+    </record>
+    <record id='course_action' model='ir.actions.act_window'>
+        <field name='name'>Course Action</field>
+        <field name='res_model'>school.course</field>
+        <field name='view_mode'>list,form</field>
+    </record>
+    <menuitem id='course_action_menu' name='Courses Management' parent='school_course_sub_menu' action='course_action'/>
+
+</odoo>

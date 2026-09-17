@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <!-- Record-level security rules for teachers -->
+    <record id="rule_student_by_teacher" model="ir.rule">
+        <field name="name">teachers see their own students</field>
+        <field name="model_id" ref="school.model_school_student"/>
+        <field name="groups" eval="[(4, ref('school.group_teacher'))]"/>
+        <field name="domain_force">[('teacher_id', '=', user.id)]</field>
+    </record>
+    
+    <record id="rule_enrollments_teacher" model="ir.rule">
+        <field name="name">teachers see their own student's enrollments</field>
+        <field name="model_id" ref="school.model_school_enrollment"/>
+        <field name="groups" eval="[(4, ref('school.group_teacher'))]"/>
+        <field name="domain_force">[('student_id.teacher_id', '=', user.id)]</field>
+    </record>
+</odoo>

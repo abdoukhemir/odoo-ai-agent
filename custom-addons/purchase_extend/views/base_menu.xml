@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <menuitem id="menu_purchase_extend_root" name="My Purchases"/>
+
+    <menuitem id="menu_purchase_extend_orders"
+              name="Orders"
+              parent="menu_purchase_extend_root"
+              action="purchase.purchase_form_action"/>
+</odoo>

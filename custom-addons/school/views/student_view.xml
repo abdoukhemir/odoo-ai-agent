@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>  
+  
+    <record id='student_list_view' model='ir.ui.view'>
+        <field name='name'>student list view</field>
+        <field name='model'>school.student</field>
+        <field name='arch' type='xml'>
+            <list string="Student List" decoration-danger="Gender == 'male'" decoration-success="Gender == 'female'">
+                 <field name="std_ref"/>
+                 <field name="Gender"/>
+                <field name="name"/>
+                <field name="phone_number"/>
+                <field name="date_of_birth"/>
+                <field name="age"/>
+                <field name="email" optional="1"/>
+                <field name="adress" optional="1"/>
+            </list>
+        </field>
+    </record>
+    <record id='student_form_view' model='ir.ui.view'>
+        <field name='name'>student form view</field>
+        <field name='model'>school.student</field>
+        <field name='arch' type='xml'>
+            <form string="Student Form">
+             <sheet>
+                <widget name="web_ribbon" title="archived" bg_color="bg-danger" invisible="active == True"/>
+                   <field name="std_ref" readonly="1" class="h1"/>
+                    <group string="Basic Information">
+                        <field name="name"/>                      
+                        <field name="date_of_birth" />    
+                        <field name="age"/>
+                        <field name="Gender"/>
+                        <field name="teacher_id" groups="school.group_manager"/>
+                        <field name="parent_id" groups="school.group_manager"/>
+                        <field name="active" invisible="1"/>
+                    </group>
+                    <group>
+                        <field name="Image" widget="image" class="oe_avatar" />
+                    </group>
+                    <group string="contact Information">
+                        <field name="phone_number"/>
+                        <field name="email" readonly="1"/>
+                        <field name="adress"/>
+                    </group>
+
+
+                    <notebook>
+                        <page string="Enrolled_courses">
+                            <field name="enrollment_ids">
+                                <list string="Enrollments" editable="bottom"> #buttom top inline
+                                    <field name="course_id"/>
+                                    <field name="enrollment_date"/>
+                                    <field name="grade"/>
+                                </list>
+                            </field>
+                        </page>
+                    </notebook>
+
+             </sheet>   
+             <chatter/>
+            </form>
+        </field>
+
+    </record>
+    <record id='student_search_view' model='ir.ui.view'>
+        <field name='name'>student search view</field>
+        <field name='model'>school.student</field>
+        <field name='arch' type='xml'>
+            <search string="Student Search">
+                <field name="name"/>
+                <field name="phone_number"/>
+                <field name="date_of_birth"/>
+                <field name="age"/>
+                <field name="email"/>
+                <field name="adress"/>
+                <filter name="filter_by_name" string="By Name" domain="[('name','ilike','%student%')]"/>
+                <filter name="group_by_active" string="group_by_active" context="{'group_by': 'active'}"/>
+            </search>
+        </field>
+
+    </record>
+    <record id='student_action' model='ir.actions.act_window'>
+        <field name='name'>Student Action</field>
+        <field name='res_model'>school.student</field>
+        <field name='view_mode'>list,form</field>
+    </record>
+   <menuitem id='student_action_menu' name='Students Management' parent='school_student_sub_menu' action='student_action'/>
+
+</odoo>

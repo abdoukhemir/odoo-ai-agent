@@ -1,0 +1,46 @@
+/* N8N Assistant Bot Channel Styling - AGGRESSIVE OVERRIDE */
+
+/* Primary selector - target by data attribute */
+[data-name="N8N Assistant"],
+.n8n-bot-channel {
+    background-color: rgba(76, 175, 80, 0.15) !important;
+    border-left: 4px solid #4CAF50 !important;
+    border-radius: 0 8px 8px 0 !important;
+    transition: background-color 0.2s ease !important;
+}
+
+[data-name="N8N Assistant"]:hover,
+.n8n-bot-channel:hover {
+    background-color: rgba(76, 175, 80, 0.25) !important;
+}
+
+/* Name styling within bot channel */
+[data-name="N8N Assistant"] .o_discuss_ChannelPreview_name,
+.n8n-bot-channel .o_discuss_ChannelPreview_name,
+[data-name="N8N Assistant"] span,
+.n8n-bot-channel span {
+    color: #2e7d32 !important;
+    font-weight: 700 !important;
+}
+
+/* Avatar styling */
+[data-name="N8N Assistant"] .o_mail_avatar,
+.n8n-bot-channel .o_mail_avatar {
+    box-shadow: 0 0 8px rgba(76, 175, 80, 0.6) !important;
+    filter: brightness(1.1) !important;
+}
+
+/* Alternative selector if above doesn't work */
+.o_discuss_ChannelPreview[title="N8N Assistant"],
+.o_discuss_ChannelPreview[title*="N8N"] {
+    background-color: rgba(76, 175, 80, 0.15) !important;
+    border-left: 4px solid #4CAF50 !important;
+}
+
+/* Ensure text stands out */
+.o_discuss_ChannelPreview[title="N8N Assistant"] .o_discuss_ChannelPreview_name,
+.o_discuss_ChannelPreview[title*="N8N"] .o_discuss_ChannelPreview_name {
+    color: #2e7d32 !important;
+    font-weight: bold !important;
+}
+

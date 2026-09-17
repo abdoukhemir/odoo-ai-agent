@@ -1,0 +1,4 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_workflow_definition,access.workflow.definition,model_workflow_definition,,1,1,1,1
+access_workflow_task,access.workflow.task,model_workflow_task,,1,1,1,1
+access_workflow_log,access.workflow.log,model_workflow_log,,1,1,1,1

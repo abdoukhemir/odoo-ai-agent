@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- Extend AI App Settings Form to add Custom Provider in the Providers block -->
+        <record id="res_config_settings_view_form_custom_ai" model="ir.ui.view">
+            <field name="name">res.config.settings.view.form.custom.ai</field>
+            <field name="model">res.config.settings</field>
+            <field name="inherit_id" ref="ai_app.res_config_settings_view_form"/>
+            <field name="arch" type="xml">
+                <!-- Add custom provider after Google Gemini provider in the AI Providers block -->
+                <xpath expr="//block[@name='ai_providers']/setting[@id='google_provider']" position="after">
+                    <setting id="custom_provider" string="Use your own Custom API provider" help="Provide your API URL and key to connect with your custom LLM provider (e.g., N8N, local LLM)" groups="base.group_system">
+                        <field name="custom_api_enabled" />
+                        <group invisible="not custom_api_enabled">
+                            <div class="w-100">
+                                <field name="custom_api_name" placeholder="e.g., My N8N API, Local LLM" nolabel="1" class="w-100"/>
+                            </div>
+                            <div class="w-100">
+                                <field name="custom_api_url" placeholder="http://localhost:3000" nolabel="1" class="w-100"/>
+                            </div>
+                            <div class="flex-grow-1">
+                                <field name="custom_api_key" placeholder="API Key" password="True" nolabel="1" class="w-100"/>
+                            </div>
+                        </group>
+                    </setting>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>

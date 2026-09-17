@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>  
+
+    <!-- Create a category for school groups -->
+    <record id="category_school" model="ir.module.category">
+        <field name="name">School Management</field>
+    </record>
+
+    <record id="group_manager" model="res.groups">
+        <field name="name">School Manager</field>
+    </record>
+
+    <record id="group_teacher" model="res.groups">
+        <field name="name">School Teacher</field>
+    </record>
+
+    <record id="group_parent" model="res.groups">
+        <field name="name">School Parent</field>
+    </record>
+
+</odoo>

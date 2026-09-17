@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- Create N8N Bot User/Partner -->
+        <record id="n8n_bot_partner" model="res.partner">
+            <field name="name">N8N Assistant</field>
+            <field name="email">n8n-bot@odoo.local</field>
+            <field name="is_company">False</field>
+        </record>
+
+        <!-- Create N8N AI Assistant System Channel -->
+        <record id="channel_n8n_ai_assistant" model="discuss.channel">
+            <field name="name">N8N Assistant</field>
+            <field name="channel_type">channel</field>
+        </record>
+    </data>
+</odoo>

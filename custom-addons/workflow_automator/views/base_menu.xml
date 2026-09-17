@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+ <menuitem id="menu_workflow_root" name="Workflow Automator"/>
+    <menuitem id="menu_workflow_definition" name="Definitions" parent="menu_workflow_root" action="action_workflow_definition"/>
+    <menuitem id="menu_workflow_task" name="Tasks" parent="menu_workflow_root" action="action_workflow_task"/>
+    <menuitem id="menu_workflow_log" name="Logs" parent="menu_workflow_root" action="action_workflow_log"/>
+</odoo>

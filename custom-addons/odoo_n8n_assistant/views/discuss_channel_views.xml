@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- Template for N8N Assistant Channel Display -->
+        <template id="n8n_channel_template" name="N8N Assistant Channel">
+            <t t-name="mail.DiscussChannelPreview.N8NBot">
+                <div class="o_discuss_ChannelPreview o_discuss_ChannelPreview--bot">
+                    <div class="o_discuss_ChannelPreview_main">
+                        <div class="o_discuss_ChannelPreview_name">🤖 N8N Assistant</div>
+                        <div class="o_discuss_ChannelPreview_subtext">AI Bot</div>
+                    </div>
+                </div>
+            </t>
+        </template>
+    </data>
+</odoo>

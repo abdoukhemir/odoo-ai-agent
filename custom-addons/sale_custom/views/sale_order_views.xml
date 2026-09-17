@@ -1,0 +1,67 @@
+<odoo>
+    <record id="view_sale_order_list" model="ir.ui.view">
+        <field name="name">sale.custom.order.list</field>
+        <field name="model">sale.custom.order</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="name" />
+                <field name="customer_id" />
+                <field name="order_date" />
+                <field name="status" />
+                <field name="total_amount" />
+                <field name="salesperson_id" />
+            </list>
+        </field>
+    </record>
+
+    <record id="view_sale_order_form" model="ir.ui.view">
+        <field name="name">sale.custom.order.form</field>
+        <field name="model">sale.custom.order</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <header>
+                        <button name="action_confirm" type="object" string="Confirm"
+                            invisible="status != 'draft'"
+                            groups="sale_custom.group_sale_custom_manager" />
+                        <button name="action_deliver" type="object" string="Deliver"
+                            invisible="status != 'confirmed'"
+                            groups="sale_custom.group_sale_custom_manager" />
+                        <button name="action_invoice" type="object" string="Invoice"
+                            invisible="status != 'delivered'"
+                            groups="sale_custom.group_sale_custom_manager" />
+
+                        <field name="status" widget="statusbar"
+                            statusbar_visible="draft,confirmed,delivered,invoiced" />
+                    </header>
+
+
+                    <group>
+                        <field name="name" />
+                        <field name="customer_id" />
+                        <field name="order_date" />
+                        <field name="total_amount" />
+                        <field name="salesperson_id" />
+                    </group>
+
+                    <group string="Order Lines">
+                        <field name="order_line_ids">
+                            <list editable="bottom">
+                                <field name="product_id" />
+                                <field name="quantity" />
+                                <field name="unit_price" />
+                                <field name="subtotal" readonly="1" />
+                            </list>
+                        </field>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_sale_custom_order" model="ir.actions.act_window">
+        <field name="name">Orders</field>
+        <field name="res_model">sale.custom.order</field>
+        <field name="view_mode">list,form</field>
+    </record>
+</odoo>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <menuitem id="menu_sales_extend_root" name="My Sales"/>
+
+  
+    <menuitem id="menu_sales_extend_orders"
+              name="Orders"
+              parent="menu_sales_extend_root"
+              action="sale.action_orders"/>
+</odoo>

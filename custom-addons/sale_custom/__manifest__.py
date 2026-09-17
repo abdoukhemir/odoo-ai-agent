@@ -1,0 +1,20 @@
+{
+    'name': 'Custom Sales',
+    'version': '1.0',
+    'summary': 'Basic custom sales workflow',
+    'description': 'Manage customers, products, and sales orders with a simple workflow.',
+    'author': 'Abderrahmen Khemir',
+    'license': 'LGPL-3',
+    'depends': ['base', 'contacts'],
+    'data': [ 'data/sequence.xml',
+              'security/sale_groups.xml',
+              'security/ir.model.access.csv', 
+              'views/sale_product_views.xml',
+              'views/sale_order_views.xml',
+              'views/sale_reporting_views.xml',
+              'views/sale_customer_views.xml',
+              'views/base_menu.xml' 
+              ],
+    'installable': True,
+    'application': True,
+}

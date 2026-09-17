@@ -1,0 +1,9 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_school_student_by_manager,access_school_student_by_manager,school.model_school_student,school.group_manager,1,1,1,1
+access_school_enrollment_by_manager,access_school_enrollment_by_manager,school.model_school_enrollment,school.group_manager,1,1,1,1
+access_school_course_by_manager,access_school_course_by_manager,school.model_school_course,school.group_manager,1,1,1,1
+
+access_school_student_by_teacher,access_school_student_by_teacher,school.model_school_student,school.group_teacher,1,1,0,0
+access_school_enrollment_by_teacher,access_school_enrollment_by_teacher,school.model_school_enrollment,school.group_teacher,1,0,0,0
+
+

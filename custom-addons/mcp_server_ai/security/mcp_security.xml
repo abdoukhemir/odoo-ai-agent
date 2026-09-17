@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- MCP User Group -->
+    <record id="group_mcp_user" model="res.groups">
+        <field name="name">MCP User</field>
+        <field name="implied_ids" eval="[(4, ref('base.group_user'))]"/>
+        <field name="comment">
+            Can access Odoo data via MCP API endpoints.
+            Can view their own audit logs.
+        </field>
+    </record>
+
+    <!-- MCP Administrator Group -->
+    <record id="group_mcp_admin" model="res.groups">
+        <field name="name">MCP Administrator</field>
+        <field name="implied_ids" eval="[(4, ref('group_mcp_user'))]"/>
+        <field name="comment">
+            Full MCP configuration access: manage model access rules,
+            view all audit logs, configure MCP server settings.
+        </field>
+    </record>
+
+    <!-- Record Rules -->
+
+    <!-- MCP User: can only see their own audit logs -->
+    <record id="rule_mcp_audit_log_user" model="ir.rule">
+        <field name="name">MCP Audit Log: User sees own logs</field>
+        <field name="model_id" ref="model_mcp_audit_log"/>
+        <field name="domain_force">[('user_id', '=', user.id)]</field>
+        <field name="groups" eval="[(4, ref('group_mcp_user'))]"/>
+        <field name="perm_read" eval="True"/>
+        <field name="perm_write" eval="False"/>
+        <field name="perm_create" eval="False"/>
+        <field name="perm_unlink" eval="False"/>
+    </record>
+
+    <!-- MCP Admin: can see all audit logs -->
+    <record id="rule_mcp_audit_log_admin" model="ir.rule">
+        <field name="name">MCP Audit Log: Admin sees all logs</field>
+        <field name="model_id" ref="model_mcp_audit_log"/>
+        <field name="domain_force">[(1, '=', 1)]</field>
+        <field name="groups" eval="[(4, ref('group_mcp_admin'))]"/>
+        <field name="perm_read" eval="True"/>
+        <field name="perm_write" eval="False"/>
+        <field name="perm_create" eval="True"/>
+        <field name="perm_unlink" eval="True"/>
+    </record>
+
+</odoo>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+   
+    <menuitem id="menu_hr_extend_root" name="My HR"/>
+
+
+    <menuitem id="menu_hr_extend_employees"
+              name="Employees"
+              parent="menu_hr_extend_root"
+              action="hr.open_view_employee_list"/>
+</odoo>

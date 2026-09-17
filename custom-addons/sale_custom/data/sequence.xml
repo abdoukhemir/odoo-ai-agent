@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="seq_sale_custom_order" model="ir.sequence">
+        <field name="name">Custom Sales Order</field>
+        <field name="code">sale.custom.order</field>
+        <field name="prefix">SO</field>
+        <field name="padding">4</field>
+        <field name="implementation">no_gap</field>
+    </record>
+</odoo>

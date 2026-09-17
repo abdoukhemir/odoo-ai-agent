@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <!-- Demo Workflow Definition -->
+    <record id="workflow_demo_definition" model="workflow.definition">
+        <field name="name">Email Notification Workflow</field>
+        <field name="trigger_type">manual</field>
+        <field name="active">True</field>
+    </record>
+
+    <!-- Demo Workflow Tasks -->
+    <record id="workflow_demo_task_send_email" model="workflow.task">
+        <field name="name">Send Welcome Email</field>
+        <field name="action_type">send_email</field>
+        <field name="sequence">1</field>
+        <field name="workflow_id" ref="workflow_demo_definition"/>
+    </record>
+
+    <record id="workflow_demo_task_update_field" model="workflow.task">
+        <field name="name">Update Customer Status</field>
+        <field name="action_type">update_field</field>
+        <field name="sequence">2</field>
+        <field name="workflow_id" ref="workflow_demo_definition"/>
+    </record>
+
+    <!-- Demo Workflow Log -->
+    <record id="workflow_demo_log" model="workflow.log">
+        <field name="workflow_id" ref="workflow_demo_definition"/>
+        <field name="execution_date">2026-02-27 12:00:00</field>
+        <field name="status">success</field>
+        <field name="duration">2.5</field>
+        <field name="details">Workflow executed successfully.</field>
+    </record>
+</odoo>

@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- Tree View -->
+    <record id="mcp_model_access_view_tree" model="ir.ui.view">
+        <field name="name">mcp.model.access.list</field>
+        <field name="model">mcp.model.access</field>
+        <field name="arch" type="xml">
+            <list string="MCP Model Access">
+                <field name="model_id"/>
+                <field name="model_name"/>
+                <field name="read_access" widget="boolean_toggle"/>
+                <field name="write_access" widget="boolean_toggle"/>
+                <field name="create_access" widget="boolean_toggle"/>
+                <field name="delete_access" widget="boolean_toggle"/>
+                <field name="cache_ttl"/>
+                <field name="active" column_invisible="True"/>
+            </list>
+        </field>
+    </record>
+
+    <!-- Form View -->
+    <record id="mcp_model_access_view_form" model="ir.ui.view">
+        <field name="name">mcp.model.access.form</field>
+        <field name="model">mcp.model.access</field>
+        <field name="arch" type="xml">
+            <form string="MCP Model Access">
+                <sheet>
+                    <div class="oe_button_box" name="button_box"/>
+                    <widget name="web_ribbon" title="Archived" bg_color="text-bg-danger"
+                            invisible="active"/>
+                    <group>
+                        <group string="Model">
+                            <field name="model_id"/>
+                            <field name="model_name"/>
+                            <field name="active" widget="boolean_toggle"/>
+                        </group>
+                        <group string="Permissions">
+                            <field name="read_access" widget="boolean_toggle"/>
+                            <field name="write_access" widget="boolean_toggle"/>
+                            <field name="create_access" widget="boolean_toggle"/>
+                            <field name="delete_access" widget="boolean_toggle"/>
+                        </group>
+                    </group>
+                    <group>
+                        <group string="Advanced">
+                            <field name="cache_ttl"/>
+                            <field name="group_ids" widget="many2many_tags"/>
+                        </group>
+                    </group>
+                    <group string="Field Restrictions">
+                        <field name="allowed_fields"
+                               placeholder='["name", "email", "phone"] or leave empty for all fields'/>
+                    </group>
+                    <group string="Notes">
+                        <field name="description" placeholder="Why is this model exposed?"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Search View -->
+    <record id="mcp_model_access_view_search" model="ir.ui.view">
+        <field name="name">mcp.model.access.search</field>
+        <field name="model">mcp.model.access</field>
+        <field name="arch" type="xml">
+            <search string="MCP Model Access">
+                <field name="model_id"/>
+                <field name="model_name"/>
+                <filter string="Active" name="active" domain="[('active', '=', True)]"/>
+                <filter string="Archived" name="archived" domain="[('active', '=', False)]"/>
+                <separator/>
+                <filter string="Read Only" name="read_only"
+                        domain="[('read_access', '=', True), ('write_access', '=', False), ('create_access', '=', False), ('delete_access', '=', False)]"/>
+                <filter string="Full CRUD" name="full_crud"
+                        domain="[('read_access', '=', True), ('write_access', '=', True), ('create_access', '=', True), ('delete_access', '=', True)]"/>
+                <group>
+                    <filter string="Active" name="group_active" context="{'group_by': 'active'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <!-- Action -->
+    <record id="action_mcp_model_access" model="ir.actions.act_window">
+        <field name="name">MCP Model Access</field>
+        <field name="res_model">mcp.model.access</field>
+        <field name="view_mode">list,form</field>
+        <field name="context">{'search_default_active': 1}</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Configure MCP Model Access
+            </p>
+            <p>
+                Add Odoo models that should be accessible via the MCP API.
+                For each model, configure which CRUD operations are allowed.
+            </p>
+        </field>
+    </record>
+
+</odoo>
